@@ -29,7 +29,7 @@ public class ProductoService {
         if (producto.getPrecio() < 0) {
             throw new ValidationException("El precio debe ser numérico");
         }
-        if (!Pattern.matches("^\\d{1,2}\\.\\d{3}\\.\\d{3}-[0-9kK]$", producto.getRutProveedor())) {
+        if (!Pattern.matches("^\\d{1,2}\\.\\d{3}\\.\\d{3}-[1-9kK]$", producto.getRutProveedor())) {
             throw new ValidationException("Debe ser un rut válido");
         }
         if (!Pattern.matches("^[\\w.%+-]+@[\\w.-]+\\.[a-zA-Z]{2,6}$", producto.getMailProveedor())) {
