@@ -28,7 +28,7 @@ public class Producto {
     @Min(value=0, message="El precio debe ser numérico")
     private double precio;
 
-    @Pattern(regexp="^\\d{1,2}\\.\\d{3}\\.\\d{3}[-][0-9kK]{1}$", message="Debe ser un rut válido")
+    @Pattern(regexp="^\\d{1,2}\\.\\d{3}\\.\\d{3}-[0-9kK]$", message="Debe ser un rut válido")
     private String rutProveedor;
 
     @Email(message="Debe tener un formato válido de mail")

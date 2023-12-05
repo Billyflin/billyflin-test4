@@ -1,5 +1,6 @@
 package com.example.test4.controller;
 
+import com.example.test4.exception.ValidationException;
 import com.example.test4.models.Producto;
 import com.example.test4.service.ProductoService;
 import org.springframework.http.ResponseEntity;
@@ -21,7 +22,7 @@ public class ProductoController {
         try {
             String[] campos = productoStr.replace("\n", "").replace("\r", "").split(",");
             if (campos.length != 6) {
-                throw new Exception("Formato de entrada inválido");
+                throw new ValidationException("Formato de entrada inválido");
             }
             Producto producto = new Producto();
             producto.setCodigoProducto(campos[0]);
@@ -29,7 +30,6 @@ public class ProductoController {
             producto.setStock(Integer.parseInt(campos[2]));
             producto.setPrecio(Double.parseDouble(campos[3].replace(".", "")));
             producto.setRutProveedor(campos[4]);
-            System.out.println(campos[5]);
             producto.setMailProveedor(campos[5]);
             productoService.crearProducto(producto);
             return ResponseEntity.ok("Producto verificado con éxito");
